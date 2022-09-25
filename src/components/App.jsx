@@ -5,8 +5,9 @@ import img4 from "../assets/img/undraw_profile_3.svg";
 import img5 from "../assets/img/undraw_profile.svg";
 
 import Home from "./Home";
-import Carta from "./Menu/Carta";
-import AltaProducto from "./Menu/AltaProducto";
+import Carta from "./Carta";
+import Menu from "./Menu";
+import Login from "./Login";
 
 function App() {
   return (
@@ -61,11 +62,8 @@ function App() {
                 data-parent="#accordionSidebar"
               >
                 <div className="bg-white py-2 collapse-inner rounded">
-                  <Link to="/carta" className="collapse-item" href="buttons.html">
+                  <Link to="/menu" className="collapse-item" href="buttons.html">
                     | Carta
-                  </Link>
-                  <Link to="/altaproducto" className="collapse-item" href="cards.html">
-                    | Alta
                   </Link>
                 </div>
               </div>
@@ -94,9 +92,9 @@ function App() {
                 data-parent="#accordionSidebar"
               >
                 <div className="bg-white py-2 collapse-inner rounded">
-                  <h6 className="collapse-header">Login Screens:</h6>
-                  <a className="collapse-item" href="login.html">
-                    Login
+                  <h6 className="collapse-header">Home Screens:</h6>
+                  <a className="collapse-item" href="Home.html">
+                    Home
                   </a>
                   <a className="collapse-item" href="register.html">
                     Register
@@ -451,8 +449,19 @@ function App() {
 
               <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path="/carta" element={<Carta />} />
-                <Route path="/altaproducto" element={<AltaProducto />} />
+
+                <Route path="/menu" element={<Menu />}>
+                  <Route index element={<Carta />} />
+                  <Route path=":id" element={<h1>GET ID</h1>} />
+                  <Route path="nuevo" element={<h1>NUEVO PRODUCTO</h1>} />
+                  <Route path="editar/:id" element={<h1>EDIT PRODUCTO</h1>} />
+                  <Route path="eliminar/:id" element={<h1>ELIMINAR PRODUCTO</h1>} />
+                </Route>
+
+
+                <Route path="/login" element={<Login />} />
+
+
               </Routes>
             </div>
 
